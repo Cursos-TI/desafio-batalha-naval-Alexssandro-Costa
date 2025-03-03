@@ -21,7 +21,7 @@ int main() {
                 tabuleiro[i][j] = 3;
                 continue;
             }
-            tabuleiro[i][j] = 0;
+            tabuleiro[i][j] = 0; // preenche o tabuleiro com agua
         }
     }
 
@@ -94,13 +94,21 @@ int main() {
     }
 
 
+    
     // mostra o tabuleiro completo na tela
     puts("\t~~~~Tabuleiro~~~~");
+    for(char i = 'a'; i <= 'j'; i++) // mostra as cordenadas verticais
+    {
+        printf("   %c", i);
+    }
+    puts("");
     for(int i = 0; i < linhas;i++)
     {
+        printf("%i-", i); // mostra as cordenadas horizontais
+
         for(int j = 0; j < colunas; j++)
         {
-            printf(" %i ", tabuleiro[i][j]);
+            printf(" %i  ", tabuleiro[i][j]);
         }
         puts("");
     }
