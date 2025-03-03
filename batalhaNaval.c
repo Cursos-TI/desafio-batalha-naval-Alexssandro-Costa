@@ -42,12 +42,57 @@ int main() {
             j--; // pula pra coluna anterior
             continue;
         }
-
-        
         i++; // pula pra proxima linha
         j--; // pula pra coluna anterior
-
     }
+
+    
+    // preenche o tabuleiro com a habilidade de cruz
+    for(int i = 4; i < 9 ; i ++)
+    {
+        for (int j = 2; j < 7; j++)
+        {
+            // preenche a linha com um elemento 
+            if(i != 6)
+            {
+                tabuleiro[i][4] = 1;
+                break;
+            }
+            tabuleiro[i][j] = 1; // preenche a linha com 5 elementos 
+        }
+    }
+    
+     // preenche o tabuleiro com a habilidade de cone
+    int aux = 5;
+    for(int i = 0; i < 3; i++)
+    {
+        // preenche a linha com 1 + n elementos, com n cemçando em 0
+        // e aumentando de 2 em 2 a cada ciclo 
+        for(int j = aux; j < (colunas-(aux-1)); j++)
+        {
+                tabuleiro[i][j] = 1;   
+        }
+        if (aux > 0) aux -= 1;
+    }
+
+    
+
+   // preenche o tabuleiro com a habilidade de octaedro
+    for(int i = 4; i < 7; i++)
+    {
+        
+        for(int j = 7; j < 10; j++)
+        {
+            // preenche a linha com apenas um elemento 
+            if(i !=5)
+            {
+                tabuleiro[i][8] = 1;
+                break;
+            }
+            tabuleiro[i][j] = 1; // preenche a linha com 3 elementos
+        }
+    }
+
 
     // mostra o tabuleiro completo na tela
     puts("\t~~~~Tabuleiro~~~~");
@@ -62,24 +107,62 @@ int main() {
 
     // Nível Mestre - Habilidades Especiais com Matrizes
     // Sugestão: Crie matrizes para representar habilidades especiais como cone, cruz, e octaedro.
-    // Sugestão: Utilize estruturas de repetição aninhadas para preencher as áreas afetadas por essas habilidades no tabuleiro.
-    // Sugestão: Exiba o tabuleiro com as áreas afetadas, utilizando 0 para áreas não afetadas e 1 para áreas atingidas.
 
-    // Exemplos de exibição das habilidades:
-    // Exemplo para habilidade em cone:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 1 1 1 1 1
-    
-    // Exemplo para habilidade em octaedro:
-    // 0 0 1 0 0
-    // 0 1 1 1 0
-    // 0 0 1 0 0
+    int cone[5][5];
+    int cruz[5][5];
+    int octaedro[5][5];
 
-    // Exemplo para habilidade em cruz:
-    // 0 0 1 0 0
-    // 1 1 1 1 1
-    // 0 0 1 0 0
+    // preenche as matrizes do cone, cruz e octaedro com zeros
+    for(int i = 0; i < 5; i++)
+    {
+        for(int j = 0; j < 5 ; j++)
+        {
+            cone[i][j] = 0;
+            cruz[i][j] = 0;
+            octaedro[i][j] = 0;
+        }
+    }
+
+    // completa a matriz com um cone
+    int aux_cone = 2;
+    for(int i = 0; i < 3; i++)
+    {
+        for(int j = aux_cone; j < (5-aux_cone); j++)
+        {
+                cone[i][j] = 1;   
+        }
+        if (aux_cone > -1) aux_cone-= 1;
+    }
+
+    // preenche a matriz com uma cruz
+    for(int i = 0; i < 3 ; i ++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            if(i != 1)
+            {
+                cruz[i][2] =  1;
+                break;
+            }
+            cruz[i][j] = 1;
+        }
+    }
+
+    // preenche a matriz com um octaedro
+
+    for(int i = 0; i < 3; i ++)
+    {
+        for(int j = 1; j < 4; j++ )
+        {
+            if(i != 1)
+            {
+                octaedro[i][2] = 1;
+                break;
+            }
+            octaedro[i][j] = 1;
+        }
+    }
+
 
     return 0;
 }
